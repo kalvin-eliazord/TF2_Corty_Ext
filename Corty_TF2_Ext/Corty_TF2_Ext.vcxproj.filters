@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{93e1b8d1-ed46-40b2-8503-8807aaa0fc27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Entity">
+      <UniqueIdentifier>{fe01727b-a25e-461e-a307-16450b01900e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\LocalPlayer">
+      <UniqueIdentifier>{42896fd9-e532-43f9-bbe8-8276e43027a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\Vec3">
+      <UniqueIdentifier>{af34d916-d321-49fa-9331-d1019533913d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Features">
+      <UniqueIdentifier>{0ee53714-0d50-4418-b55a-465d148a6a66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK\MemUtils">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Features\Aimbot">
+      <UniqueIdentifier>{800587ef-2208-44b1-ba0c-6b3595cf9bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log">
+      <UniqueIdentifier>{ee82f1fe-a281-4e6f-a6f9-2e0d4380b153}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Entity.cpp">
+      <Filter>SDK\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalPlayer.cpp">
+      <Filter>SDK\LocalPlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector3.cpp">
+      <Filter>SDK\Vec3</Filter>
+    </ClCompile>
+    <ClCompile Include="Cheat.cpp">
+      <Filter>Features</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePointers.cpp">
+      <Filter>SDK\MemUtils</Filter>
+    </ClCompile>
+    <ClCompile Include="Aimbot.cpp">
+      <Filter>Features\Aimbot</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Log</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Entity.h">
+      <Filter>SDK\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalPlayer.h">
+      <Filter>SDK\LocalPlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector3.h">
+      <Filter>SDK\Vec3</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePointers.h">
+      <Filter>SDK\MemUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="Cheat.h">
+      <Filter>Features</Filter>
+    </ClInclude>
+    <ClInclude Include="Aimbot.h">
+      <Filter>Features\Aimbot</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Log</Filter>
+    </ClInclude>
+    <ClInclude Include="Offsets.h">
+      <Filter>SDK\MemUtils</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
