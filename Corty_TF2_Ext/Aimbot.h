@@ -10,7 +10,9 @@ struct Aimbot
 {
 	bool Run(const std::vector<Entity>& pEntities);
 	Entity GetNearEntity(const std::vector<Entity>& pEntities);
-	bool CalcAngles(const Entity& pEntity, Vector3& pNewAngles);
+	bool IsFOV(const Entity& pEntity);
+	bool CalcAngles(const Vector3& pEntPos, Vector3& pBotAngles);
 	void ClampPitch(float& pPitch);
 	void NormalizeYaw(float& pYaw);
+	Entity entLocked{};
 };

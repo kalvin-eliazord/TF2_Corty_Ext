@@ -4,5 +4,5 @@
 namespace LocalPlayer
 {
 	Entity GetBase();
-	bool SetMyAngles(const Vector3& pNewAngles);
+	bool SetMyAngles(const Vector3& pBotAngles);
 };

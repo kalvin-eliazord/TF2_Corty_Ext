@@ -13,9 +13,9 @@ Entity LocalPlayer::GetBase()
     return Entity();
 }
 
-bool LocalPlayer::SetMyAngles(const Vector3& pNewAngles)
+bool LocalPlayer::SetMyAngles(const Vector3& pBotAngles)
 {
-    if (!WriteProcessMemory(Offsets::hProc, (Vector3*)(Offsets::EngineMod + Offsets::LocalPlayer::vAngles), &pNewAngles, sizeof(Vector3), nullptr))
+    if (!WriteProcessMemory(Offsets::hProc, (Vector3*)(Offsets::EngineMod + Offsets::LocalPlayer::vAngles), &pBotAngles, sizeof(Vector3), nullptr))
     {
         std::cerr << "[-] Cannot write to localPlayer angles. \n";
         system("PAUSE");

@@ -1,50 +1,50 @@
-#include "Log.h"
+#include "Menu.h"
 
-bool Log::IsOptionChanged()
+bool Menu::IsOptionChanged()
 {
 	if (GetAsyncKeyState(VK_LSHIFT) & 1)
 	{
 		bAimbot = !bAimbot;
 		return true;
 	}
-	//else if (GetAsyncKeyState(VK_F2) & 1)
-	//{
-	//	bTargetLock = !bTargetLock;
-	//	return true;
-	//}
-	//else if (GetAsyncKeyState(VK_F3) & 1 &&
-	//	smoothValue > 0)
-	//{
-	//	--smoothValue;
-	//	return true;
-	//}
-	//else if (GetAsyncKeyState(VK_F4))
-	//{
-	//	++smoothValue;
-	//	return true;
-	//}
-	//else if (GetAsyncKeyState(VK_F5) & 1 &&
-	//	fovValue > 10)
-	//{
-	//	fovValue -= 10;
-	//	return true;
-	//}
-	//else if (GetAsyncKeyState(VK_F6) & 1 &&
-	//	fovValue < 100)
-	//{
-	//	fovValue += 10;
-	//	return true;
-	//}
-	//else if (GetAsyncKeyState(VK_F8) & 1)
-	//{
-	//	bESP = !bESP;
-	//	return true;
-	//}
+	else if (GetAsyncKeyState(VK_F2) & 1)
+	{
+		bTargetLock = !bTargetLock;
+		return true;
+	}
+	else if (GetAsyncKeyState(VK_F3) & 1 &&
+		iSmooth > 0)
+	{
+		--iSmooth;
+		return true;
+	}
+	else if (GetAsyncKeyState(VK_F4))
+	{
+		++iSmooth;
+		return true;
+	}
+	else if (GetAsyncKeyState(VK_F5) & 1 &&
+		iFOV > 10)
+	{
+		iFOV -= 10;
+		return true;
+	}
+	else if (GetAsyncKeyState(VK_F6) & 1 &&
+		iFOV < 100)
+	{
+		iFOV += 10;
+		return true;
+	}
+	else if (GetAsyncKeyState(VK_F7) & 1)
+	{
+		bESP = !bESP;
+		return true;
+	}
 
 	return false;
 }
 
-void Log::PrintMenu()
+void Menu::PrintMenu()
 {
 	system("cls");
 
@@ -59,12 +59,17 @@ void Log::PrintMenu()
                       |___/                 
 		)" << '\n';
 	std::cout << "-------------------------------------------------------------- \n";
-	std::cout << "[+] AIMBOT - [LSHIFT] " << std::boolalpha << "->[[" << bAimbot << "]] \n";
+	std::cout << "[+] AIMBOT [LSHIFT] " << std::boolalpha << "->[[" << bAimbot << "]] \n";
+	std::cout << "[+] T_LOCK [F2]     " << std::boolalpha << "->[[" << bTargetLock << "]] \n";
+	//std::cout << "[+] SMOOTH [F3- F4+]" << "->[[" << iSmooth << "]] \n"; TODO
+	std::cout << "[+] FOV    [F5- F6+]" << "->[[" << iFOV << "]] \n";
+	//std::cout << "[+] ESP    [F7]     " << std::boolalpha << "->[[" << bESP << "]] \n"; TODO
+
 	std::cout << "-------------------------------------------------------------- \n";
 	std::cout << "[+] DELETE to exit \n";
 }
 
-void Log::PrintPtrErr(const std::map<std::string_view, intptr_t> pPtrList)
+void Menu::PrintPtrErr(const std::map<std::string_view, intptr_t> pPtrList)
 {
 	std::cout << "[-] Memory initialization error : \n";
 

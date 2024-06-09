@@ -2,12 +2,10 @@
 #include <Windows.h>
 #include <vector>
 #include "Aimbot.h"
-//#include "ESP.h"
+#include "ESP.h"
 #include "Offsets.h"
 #include "Entity.h"
-#include "Log.h"
-
-//struct ESP;
+#include "Menu.h"
 
 namespace Cheat
 {
@@ -15,6 +13,5 @@ namespace Cheat
 	DWORD64 GetEntity(UINT pIndex);
 	std::vector<Entity> GetEntities();
 	bool IsGoodEnt(Entity* pEntity);
-	//ESP* esp;
 };
 

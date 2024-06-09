@@ -23,7 +23,10 @@
     <Filter Include="Features\Aimbot">
       <UniqueIdentifier>{800587ef-2208-44b1-ba0c-6b3595cf9bba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Log">
+    <Filter Include="Features\ESP">
+      <UniqueIdentifier>{4ca94790-64f7-47b5-af6b-aaafa68e8737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu">
       <UniqueIdentifier>{ee82f1fe-a281-4e6f-a6f9-2e0d4380b153}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -46,10 +49,13 @@
     <ClCompile Include="Aimbot.cpp">
       <Filter>Features\Aimbot</Filter>
     </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Log</Filter>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Menu</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ESP.cpp">
+      <Filter>Features\ESP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -70,11 +76,14 @@
     <ClInclude Include="Aimbot.h">
       <Filter>Features\Aimbot</Filter>
     </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Log</Filter>
+    <ClInclude Include="Menu.h">
+      <Filter>Menu</Filter>
     </ClInclude>
     <ClInclude Include="Offsets.h">
       <Filter>SDK\MemUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="ESP.h">
+      <Filter>Features\ESP</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

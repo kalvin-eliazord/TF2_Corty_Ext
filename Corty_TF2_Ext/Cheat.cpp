@@ -27,7 +27,7 @@ std::vector<Entity> Cheat::GetEntities()
     {
         Entity currEnt(GetEntity(i));
 
-        if (!IsGoodEnt(&currEnt))
+        if (!(currEnt.bInit && IsGoodEnt(&currEnt)))
             continue;
 
         entities.push_back(currEnt);
@@ -38,9 +38,6 @@ std::vector<Entity> Cheat::GetEntities()
 
 bool Cheat::IsGoodEnt(Entity* pEntity)
 {
-    if (!pEntity->bInit)
-        return false;
-
     if (pEntity->baseAddr == LocalPlayer::GetBase().baseAddr)
         return false;
 
@@ -61,22 +58,24 @@ bool Cheat::IsGoodEnt(Entity* pEntity)
 
 bool Cheat::Run()
 {
-    Aimbot aimbot{};
-    //ESP esp{};
+    Aimbot aBot{};
+    ESP esp{};
+    esp.InitWindow();
+
     while (!(GetAsyncKeyState(VK_DELETE) & 1))
     {
-        if (Log::IsOptionChanged())
-            Log::PrintMenu();
+        if (Menu::IsOptionChanged())
+            Menu::PrintMenu();
 
-        if (Log::bAimbot /*|| bESP*/)
+        if (Menu::bAimbot || Menu::bESP)
         {
             std::vector<Entity> entities{GetEntities() };
 
-            if (Log::bAimbot)
-                aimbot.Run(entities);
+            if (Menu::bAimbot)
+                aBot.Run(entities);
 
-            //if(Log::bESP)
-            //esp.Run(entities);
+            if(Menu::bESP)
+                esp.Run(entities);
         }
 
         Sleep(10);
