@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Aimbot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Cheat.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Aimbot.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\ESP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Aimbot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Cheat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Entity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -27,32 +31,28 @@
       "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\GamePointers.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\ESP.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\ESP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Cheat.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Vector3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Vector3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\LocalPlayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\LocalPlayer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Vector3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Vector3.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Entity.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\Aimbot.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|solutionrelative:Corty_TF2_Ext\\ESP.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7662EA45-2E4E-499D-A59F-7A898BB0D725}|Corty_TF2_Ext\\Corty_TF2_Ext.vcxproj|C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -74,17 +74,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Aimbot.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Aimbot.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\Aimbot.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAXAAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAAFYAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-02T09:35:22.213Z",
               "IsPinned": true,
@@ -92,13 +92,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Entity.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Entity.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Entity.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Entity.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\Entity.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-02T15:16:20.083Z",
               "IsPinned": true,
@@ -106,13 +106,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "GamePointers.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\GamePointers.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\GamePointers.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\GamePointers.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\GamePointers.cpp",
-              "ViewState": "AQIAAJEAAAAAQEljsZsmwAMBAAABAAAA",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAkwJEAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-01T09:40:31.785Z",
               "IsPinned": true,
@@ -120,13 +120,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Cheat.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Cheat.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\Cheat.cpp",
-              "ViewState": "AQIAACYAAAAAAAAAAADwv0oAAAAYAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-02T09:33:23.765Z",
               "IsPinned": true,
@@ -146,20 +146,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
+              "Title": "Vector3.h",
+              "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Vector3.h",
+              "RelativeDocumentMoniker": "Corty_TF2_Ext\\Vector3.h",
+              "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Vector3.h",
+              "RelativeToolTip": "Corty_TF2_Ext\\Vector3.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-06-10T07:58:25.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Menu.h",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.h",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Menu.h",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.h",
               "RelativeToolTip": "Corty_TF2_Ext\\Menu.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-06-09T12:57:51.004Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "ESP.h",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.h",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\ESP.h",
@@ -167,44 +180,43 @@
               "RelativeToolTip": "Corty_TF2_Ext\\ESP.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-07T15:13:50.655Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-07T15:13:50.655Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "ESP.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\ESP.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\ESP.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\ESP.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAcAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-07T15:13:50.617Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Vector3.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Vector3.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Vector3.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Vector3.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\Vector3.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-05T17:23:50.654Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Menu.cpp",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.cpp",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Menu.cpp",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Menu.cpp",
               "RelativeToolTip": "Corty_TF2_Ext\\Menu.cpp",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAAAEYAAAAAAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAE4AAAASAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-05T16:52:49.943Z",
               "EditorCaption": ""
@@ -217,10 +229,9 @@
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Entity.h",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Entity.h",
               "RelativeToolTip": "Corty_TF2_Ext\\Entity.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-06-02T15:54:38.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-02T15:54:38.675Z"
             },
             {
               "$type": "Document",
@@ -260,39 +271,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LocalPlayer.cpp",
-              "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\LocalPlayer.cpp",
-              "RelativeDocumentMoniker": "Corty_TF2_Ext\\LocalPlayer.cpp",
-              "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\LocalPlayer.cpp",
-              "RelativeToolTip": "Corty_TF2_Ext\\LocalPlayer.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-02T14:34:29.51Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 3,
               "Title": "Aimbot.h",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.h",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Aimbot.h",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Aimbot.h",
               "RelativeToolTip": "Corty_TF2_Ext\\Aimbot.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-06-02T14:21:54.349Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
               "Title": "Cheat.h",
               "DocumentMoniker": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.h",
               "RelativeDocumentMoniker": "Corty_TF2_Ext\\Cheat.h",
               "ToolTip": "C:\\Users\\Corty\\source\\repos\\TF2_Corty_Ext\\Corty_TF2_Ext\\Cheat.h",
               "RelativeToolTip": "Corty_TF2_Ext\\Cheat.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-06-02T14:21:04.583Z",
               "EditorCaption": ""

@@ -1,7 +1,8 @@
 #include "Entity.h"
 
-Entity::Entity(DWORD64 pBaseAddr)
+Entity::Entity(DWORD64 pBaseAddr, UINT pIndex)
 	: baseAddr{ pBaseAddr }
+	, index {pIndex}
 { 
 	// When game haven't started pointers aren't initialized
 	//  so it prevents trying to init members with dangling baseAddr value

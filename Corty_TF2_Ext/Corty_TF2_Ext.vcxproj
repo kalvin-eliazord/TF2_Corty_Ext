@@ -145,7 +145,6 @@
     <ClCompile Include="Aimbot.cpp" />
     <ClCompile Include="Cheat.cpp" />
     <ClCompile Include="ESP.cpp" />
-    <ClCompile Include="LocalPlayer.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -157,7 +156,6 @@
     <ClInclude Include="Cheat.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="ESP.h" />
-    <ClInclude Include="LocalPlayer.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Offsets.h" />
     <ClInclude Include="GamePointers.h" />

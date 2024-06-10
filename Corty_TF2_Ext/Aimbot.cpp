@@ -1,118 +1,98 @@
 #include "Aimbot.h"
+
 bool Aimbot::Run(const std::vector<Entity>& pEntities)
 {
 	if (pEntities.empty())
 		return false;
 
-	Entity nearEnt{};
-	if (pEntities.size() > 1)
-		nearEnt = GetNearEntity(pEntities);
-	else
-		nearEnt = pEntities[0];
-
-	if (!nearEnt.bInit)
-	{
-		std::cerr << "[-] Could not get the nearest entity. \t \r";
-		return false;
-	}
-
-	if (!Menu::bTargetLock)
-		entLocked = nearEnt;
-
-	if (!IsFOV(nearEnt)) // TODO: FUSE IT W CALCANGLE FUNC because it already calcangle 
-		return false;
-
 	Vector3 botAngles{};
-	if (Menu::bTargetLock)
+	if (!(Menu::bTargetLock && entIndex))
 	{
-		if (entLocked.bInit && entLocked.health > 1)
-		{
-			if (!CalcAngles(entLocked.vBodyPos, botAngles))
-				return false;
+		botAngles = GetNearEntAngles(pEntities);
 
-			//if(Menu::Smoothing > 0)
-			// LocalPlayer::SetSmoothAngles(botAngles); TODO
-			// else
-			LocalPlayer::SetMyAngles(botAngles);
-		}
-		else
-		{
-			entLocked = NULL;
-		}
+		if (!IsFOV(botAngles))
+			return true;
 	}
 	else
 	{
-		if (!CalcAngles(nearEnt.vBodyPos, botAngles))
-			return false;
+		// Target locking 
+		Entity entLocked(Cheat::GetEntity(entIndex), entIndex);
+		if (entLocked.health <= 1)
+		{
+			entIndex = 0;
+			return true;
+		}
 
-		//if(Menu::Smoothing > 0)
-		// LocalPlayer::SetSmoothAngles(botAngles); TODO
-		// else
-		LocalPlayer::SetMyAngles(botAngles);
+		CalcAngles(entLocked.vBodyPos, botAngles);
+
+		if (!IsFOV(botAngles))
+			return true;
 	}
+
+	if(Menu::iSmooth > 0)
+		SetSmoothAngles(botAngles, Menu::iSmooth);
+	else
+		SetAngles(botAngles);
 
 	return true;
 }
 
-Entity Aimbot::GetNearEntity(const std::vector<Entity>& pEntities)
+Vector3 Aimbot::GetNearEntAngles(const std::vector<Entity>& pEntities)
 {
-	Entity nearEntity{};
+	Vector3 vNewAngles{};
 	float oldCoef{ FLT_MAX };
 
 	for (auto& entity : pEntities)
 	{
-		Vector3 vDeltaPos{ LocalPlayer::GetBase().vBodyPos - entity.vBodyPos };
+		// Body position distance
+		Vector3 vDeltaPos{ Cheat::GetLocalPlayer().vBodyPos - entity.vBodyPos };
 		const float posDist{ sqrtf(vDeltaPos * vDeltaPos) };
 
+		// Angles distance
 		Vector3 currAngles{};
 		CalcAngles(entity.vBodyPos, currAngles);
-		Vector3 vDeltaAngle{ LocalPlayer::GetBase().vAngles - currAngles };
+		Vector3 vDeltaAngle{ Cheat::GetLocalPlayer().vAngles - currAngles };
 		const float angleDist{ ::sqrtf(vDeltaAngle * vDeltaAngle) };
 
+		// Nearest entity based on the position and the angle distance
 		const float currCoef{ posDist * 0.8f + angleDist * 0.2f };
-
 		if (oldCoef > currCoef)
 		{
 			oldCoef = currCoef;
-			nearEntity = entity;
+			vNewAngles = currAngles;
+
+			// Needed to access the entity when the target locking is activated
+			entIndex = entity.index;
 		}
 	}
 
-	return nearEntity;
+	return vNewAngles;
 }
 
-bool Aimbot::IsFOV(const Entity& pEntity)
+bool Aimbot::IsFOV(const Vector3& pBotAngles)
 {
-	Vector3 myAngles{ LocalPlayer::GetBase().vAngles };
+	Vector3 myAngles{ Cheat::GetLocalPlayer().vAngles };
+	Vector3 vDelta{ myAngles - pBotAngles };
+	NormalizeYaw(vDelta.y);
 
-	Vector3 botAngles{};
-	CalcAngles(pEntity.vBodyPos, botAngles);
-
-	Vector3 vDelta{ myAngles - botAngles };
-	const float fDist{ ::sqrt(vDelta * vDelta) };
-
-#if _DEBUG
-	std::cout << "[+] distFov : " << fDist << '\r';
-#endif
+	float fDist{ ::sqrt(vDelta * vDelta) };
 
 	if (fDist < Menu::iFOV) return true;
 
 	return false;
 }
 
-bool Aimbot::CalcAngles(const Vector3& pEntPos, Vector3& pBotAngles)
+void Aimbot::CalcAngles(const Vector3& pEntPos, Vector3& pBotAngles)
 {
-	Vector3 vDelta{ LocalPlayer::GetBase().vBodyPos - pEntPos };
+	Vector3 vDelta{ Cheat::GetLocalPlayer().vBodyPos - pEntPos };
 	const float fMagnitude{ ::sqrtf(vDelta * vDelta) };
 
 	constexpr float radToDegree{ 57.295778f };
 	pBotAngles.x = asinf(vDelta.z / fMagnitude) * radToDegree;
-	pBotAngles.y = atan2f(vDelta.y, vDelta.x) * radToDegree;
+	pBotAngles.y = (atan2f(vDelta.y, vDelta.x) * radToDegree) + 180; // Normalize Yaw
 	pBotAngles.z = 0;
 
 	ClampPitch(pBotAngles.x);
-	NormalizeYaw(pBotAngles.y);
-	return true;
 }
 
 void Aimbot::ClampPitch(float& pPitch)
@@ -123,5 +103,40 @@ void Aimbot::ClampPitch(float& pPitch)
 
 void Aimbot::NormalizeYaw(float& pYaw)
 {
-	pYaw += 180;
+	while (pYaw > 180.f) pYaw -= 360.f;
+	while (pYaw < -180.f) pYaw += 360.f;
+}
+
+Vector3 Aimbot::GetLocalPlayerAngles()
+{
+	Vector3 lpAngles{};
+	ReadMem<Vector3>(Cheat::GetLocalPlayer().baseAddr, { Offsets::Entity::Angles }, lpAngles);
+	return lpAngles;
+}
+
+bool Aimbot::SetAngles(const Vector3& pBotAngles)
+{
+	if (!WriteProcessMemory(Offsets::hProc, (Vector3*)(Offsets::EngineMod + Offsets::LocalPlayer::vAngles), &pBotAngles, sizeof(Vector3), nullptr))
+	{
+		std::cerr << "[-] Cannot write to localPlayer angles. \r";
+		return false;
+	}
+
+	return true;
+}
+
+bool Aimbot::SetSmoothAngles(Vector3 pBotAngles, int pSmooth)
+{
+	Vector3 lpAngles{ GetLocalPlayerAngles() };
+	Vector3 vDelta{ pBotAngles - lpAngles };
+	NormalizeYaw(vDelta.y);
+
+	if (lpAngles.x != pBotAngles.x)
+		lpAngles.x += vDelta.x / static_cast<float>(pSmooth);
+
+	if (lpAngles.y != pBotAngles.y)
+		lpAngles.y += vDelta.y / static_cast<float>(pSmooth);
+
+	SetAngles(lpAngles);
+	return true;
 }

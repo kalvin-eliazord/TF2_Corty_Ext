@@ -13,8 +13,9 @@ struct Entity
 	bool bDormant{};
 	Vector3 vBodyPos{};
 	Vector3 vAngles{};
+	const UINT index{};
 
-	Entity(DWORD64 pBaseAddr);
+	Entity(DWORD64 pBaseAddr, UINT pIndex);
 	Entity();
 
 	bool InitData();

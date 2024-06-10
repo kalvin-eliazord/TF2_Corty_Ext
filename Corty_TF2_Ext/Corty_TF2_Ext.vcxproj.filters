@@ -7,9 +7,6 @@
     <Filter Include="SDK\Entity">
       <UniqueIdentifier>{fe01727b-a25e-461e-a307-16450b01900e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="SDK\LocalPlayer">
-      <UniqueIdentifier>{42896fd9-e532-43f9-bbe8-8276e43027a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SDK\Vec3">
       <UniqueIdentifier>{af34d916-d321-49fa-9331-d1019533913d}</UniqueIdentifier>
     </Filter>
@@ -34,9 +31,6 @@
     <ClCompile Include="Entity.cpp">
       <Filter>SDK\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="LocalPlayer.cpp">
-      <Filter>SDK\LocalPlayer</Filter>
-    </ClCompile>
     <ClCompile Include="Vector3.cpp">
       <Filter>SDK\Vec3</Filter>
     </ClCompile>
@@ -60,9 +54,6 @@
   <ItemGroup>
     <ClInclude Include="Entity.h">
       <Filter>SDK\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="LocalPlayer.h">
-      <Filter>SDK\LocalPlayer</Filter>
     </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>SDK\Vec3</Filter>
