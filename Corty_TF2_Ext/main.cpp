@@ -5,39 +5,28 @@
 #include "Menu.h"
 #include "Cheat.h"
 
-//LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-//	const MARGINS margin = { 0, 0, Render.RenderWidth, Render.RenderHeight };
-//
-//	switch (message) {
-//
-//	case WM_PAINT:
-//		DwmExtendFrameIntoClientArea(hWnd, &margin);
-//		break;
-//
-//	case WM_DESTROY:
-//		PostQuitMessage(0);
-//		return 0;
-//		break;
-//
-//	}
-//
-//	return DefWindowProc(hWnd, message, wParam, lParam);
-//}
-
-int main()
+int WINAPI wWinMain(_In_ HINSTANCE hInstance,
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPWSTR lpCmdLine,
+	_In_ int nShowCmd)
 {
 	SetConsoleTitle(L"Corty TF2 External");
 
 	GamePointers gPointers{};
-	if (gPointers.Init())
-	{
-		Menu::PrintMenu();
-		Cheat::Run();
-	}
-	else
+	if (!gPointers.Init())
 	{
 		Menu::PrintPtrErr(gPointers.ptrList);
+
+		if (Offsets::hProc)
+			CloseHandle(Offsets::hProc);
+
+		return 1;
 	}
+
+	Menu::PrintMenu();
+
+	if (!Cheat::Run(hInstance, nShowCmd))
+		system("PAUSE");
 
 	if (Offsets::hProc)
 		CloseHandle(Offsets::hProc);

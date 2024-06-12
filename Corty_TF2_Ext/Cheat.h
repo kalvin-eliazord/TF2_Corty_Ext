@@ -9,7 +9,7 @@
 
 namespace Cheat
 {
-	bool Run();
+	bool Run(HINSTANCE hInstance, int nShowCmd);
 	DWORD64 GetEntity(UINT pIndex);
 	std::vector<Entity> GetEntities();
 	Entity GetLocalPlayer();
