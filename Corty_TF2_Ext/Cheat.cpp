@@ -69,11 +69,11 @@ bool Cheat::IsGoodEnt(Entity* pEntity)
 	return true;
 }
 
-bool Cheat::Run(HINSTANCE hInstance, int nShowCmd)
+bool Cheat::Run()
 {
 	Aimbot aBot{};
 	ESP esp{};
-	if (!esp.InitWin(hInstance, nShowCmd))
+	if (!(esp.InitWin() && esp.CreateD3D9()))
 		return false;
 
 	while (!(GetAsyncKeyState(VK_DELETE) & 1))

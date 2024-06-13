@@ -5,10 +5,7 @@
 #include "Menu.h"
 #include "Cheat.h"
 
-int WINAPI wWinMain(_In_ HINSTANCE hInstance,
-	_In_opt_ HINSTANCE hPrevInstance,
-	_In_ LPWSTR lpCmdLine,
-	_In_ int nShowCmd)
+int main()
 {
 	SetConsoleTitle(L"Corty TF2 External");
 
@@ -25,7 +22,7 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance,
 
 	Menu::PrintMenu();
 
-	if (!Cheat::Run(hInstance, nShowCmd))
+	if (!Cheat::Run())
 		system("PAUSE");
 
 	if (Offsets::hProc)

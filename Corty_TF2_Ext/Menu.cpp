@@ -63,8 +63,7 @@ void Menu::PrintMenu()
 	std::cout << "[+] T_LOCK [F2]     " << std::boolalpha << "->[[" << bTargetLock << "]] \n";
 	std::cout << "[+] SMOOTH [F3- F4+]" << "->[[" << iSmooth << "]] \n";
 	std::cout << "[+] FOV    [F5- F6+]" << "->[[" << iFOV << "]] \n";
-	//std::cout << "[+] ESP    [F7]     " << std::boolalpha << "->[[" << bESP << "]] \n"; TODO
-
+	std::cout << "[+] ESP    [F7]     " << std::boolalpha << "->[[" << bESP << "]] \n";
 	std::cout << "-------------------------------------------------------------- \n";
 	std::cout << "[+] DELETE to exit \n";
 }

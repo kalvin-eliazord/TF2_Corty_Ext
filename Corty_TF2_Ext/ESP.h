@@ -11,13 +11,20 @@
 struct DataWin
 {
 	HWND hwnd{};
-	const wchar_t* name{ L"Team Fortress 2 - Direct3D 9 - 64 Bit" };
 	int width{};
 	int height{};
+	MSG msg{};
 };
 
 struct ESP
 {
-	bool InitWin(_In_ HINSTANCE hInstance, _In_ int nShowCmd);
+	DataWin targetHwnd{};
+	IDirect3D9* d3d9Interface{ nullptr };
+	IDirect3DDevice9* d3d9Device{ nullptr };
+
+	bool InitWin();
 	bool Run(std::vector<Entity> pEntities);
+	bool CreateD3D9();
+	bool Draw();
+	~ESP();
 };
