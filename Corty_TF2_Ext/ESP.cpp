@@ -64,7 +64,7 @@ bool ESP::InitWin()
 		wndEx.hInstance,
 		NULL);
 
-	const int extdStyle{ 
+	const int extdStyle{
 		static_cast<int>(GetWindowLong(myHwnd.hwnd, GWL_EXSTYLE))
 		| WS_EX_LAYERED
 		| WS_EX_TRANSPARENT };
@@ -72,11 +72,13 @@ bool ESP::InitWin()
 	SetWindowLong(myHwnd.hwnd, GWL_EXSTYLE, extdStyle);
 	SetLayeredWindowAttributes(myHwnd.hwnd, RGB(0, 0, 0), 255, ULW_COLORKEY | LWA_ALPHA);
 	ShowWindow(myHwnd.hwnd, SW_SHOWDEFAULT);
-	
+
+	this->myWnd = &myHwnd.hwnd;
+
 	return true;
 }
 
-bool ESP::Run(std::vector<Entity> pEntities)
+void ESP::Run(const std::vector<Entity>& pEntities)
 {
 	auto& msg{ myHwnd.msg };
 	auto& targetHwnd{ this->targetHwnd.hwnd };
@@ -89,7 +91,7 @@ bool ESP::Run(std::vector<Entity> pEntities)
 	MoveWindow(myHwnd.hwnd, rect.left, rect.top, width, height, true);
 	SetWindowPos(myHwnd.hwnd, HWND_TOPMOST, rect.left, rect.top, width, height, SWP_NOMOVE | SWP_NOSIZE);
 
-	Draw();
+	Draw(pEntities);
 
 	if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 	{
@@ -99,8 +101,6 @@ bool ESP::Run(std::vector<Entity> pEntities)
 
 	if (msg.message == WM_QUIT)
 		CloseWindow(myHwnd.hwnd);
-
-	return true;
 }
 
 bool ESP::CreateD3D9()
@@ -112,7 +112,7 @@ bool ESP::CreateD3D9()
 		return false;
 	}
 
-	D3DPRESENT_PARAMETERS d3dParam{0};
+	D3DPRESENT_PARAMETERS d3dParam{ 0 };
 	ZeroMemory(&d3dParam, sizeof(d3dParam));
 	d3dParam.Windowed = TRUE;
 	d3dParam.hDeviceWindow = myHwnd.hwnd;
@@ -135,17 +135,15 @@ bool ESP::CreateD3D9()
 	return true;
 }
 
-bool ESP::Draw()
+bool ESP::Draw(const std::vector<Entity>& pEntities)
 {
 	HRESULT hRes{ d3d9Device->BeginScene() };
 	if (FAILED(hRes)) return false;
 
 	d3d9Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_RGBA(0, 0, 0, 0), 1.0f, 0);
-	
 	D3DVIEWPORT9 viewport{};
 	d3d9Device->GetViewport(&viewport);
 
-	// TODO Snap lines + Boxes
 #ifdef _DEBUG
 	D3DRECT rect{
 		static_cast<LONG>(viewport.Width / 2),
@@ -155,6 +153,16 @@ bool ESP::Draw()
 
 	d3d9Device->Clear(1, &rect, D3DCLEAR_TARGET, D3DCOLOR_RGBA(255, 0, 0, 0), 0, 0);
 #endif
+	// TODO Snap lines + Boxes
+	if (!pEntities.empty())
+	{
+		for (auto& ent : pEntities)
+		{
+			Vector3 screenPos{};
+			W2S(ent.vBodyPos, screenPos, static_cast<FLOAT>(this->targetHwnd.width), static_cast<FLOAT>(this->targetHwnd.height));
+		}
+	}
+
 	hRes = d3d9Device->EndScene();
 	if (FAILED(hRes)) return false;
 
@@ -163,8 +171,44 @@ bool ESP::Draw()
 	return true;
 }
 
+bool ESP::W2S(Vector3 pWorldPos, Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight)
+{
+	float matrix2[4][4];
+	DWORD64 baseAddr{ 0x7FFBE4959624 };
+	ReadMem(baseAddr, sizeof(matrix2), matrix2);
+
+	const float mX{ pWinWidth / 2 };
+	const float mY{ pWinHeight / 2 };
+
+	const float w{
+		matrix2[3][0] * pWorldPos.x +
+		matrix2[3][1] * pWorldPos.y +
+		matrix2[3][2] * pWorldPos.z +
+		matrix2[3][3] };
+
+	if (w < 0.65f) return false;
+
+	const float x{
+		matrix2[0][0] * pWorldPos.x +
+		matrix2[0][1] * pWorldPos.y +
+		matrix2[0][2] * pWorldPos.z +
+		matrix2[0][3] };
+
+	const float y{
+		matrix2[1][0] * pWorldPos.x +
+		matrix2[1][1] * pWorldPos.y +
+		matrix2[1][2] * pWorldPos.z +
+		matrix2[1][3] };
+
+	pScreenPos.x = (mX + mX * x / w);
+	pScreenPos.y = (mY - mY * y / w);
+	pScreenPos.z = 0;
+
+	return true;
+}
+
 ESP::~ESP()
 {
-	if(d3d9Device) d3d9Device->Release();
-	if(d3d9Interface) d3d9Interface->Release();
+	if (d3d9Device) d3d9Device->Release();
+	if (d3d9Interface) d3d9Interface->Release();
 }

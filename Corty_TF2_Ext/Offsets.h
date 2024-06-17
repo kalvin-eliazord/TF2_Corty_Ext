@@ -19,16 +19,37 @@ namespace Offsets
 	namespace Entity
 	{
 		inline constexpr DWORD Health{ 0xE4 };
-		inline constexpr DWORD BodyPos{0x338};
+		inline constexpr DWORD BodyPos{ 0x338 };
 		inline constexpr DWORD Angles{ 0x344 };
 		inline constexpr DWORD TeamID{ 0xEC };
 		inline constexpr DWORD Dormant{ 0x2A };
-		//inline constexpr DWORD Alive{ 0x }; TODO
+		inline constexpr DWORD Alive{ 0x0 }; //TODO
 	}
 }
 
 template <typename T>
-bool ReadMem(DWORD64 pBaseAddr, std::vector<DWORD> pOffsets, T &pResult)
+bool ReadMem(DWORD64 pBaseAddr, auto pSize, T& pResult)
+{
+	if (!pBaseAddr || !pSize)
+	{
+		std::cerr << "[-] Cannot read memory, please check parameters. \n";
+		system("PAUSE");
+		return false;
+	}
+
+	SIZE_T nbBytes{ 0 };
+	if (!ReadProcessMemory(Offsets::hProc, (T*)pBaseAddr, &pResult, pSize, &nbBytes) || !nbBytes)
+	{
+		std::cerr << "[-] Cannot read memory, please check pointer path. \n";
+		system("PAUSE");
+		return false;
+	}
+
+	return true;
+}
+
+template <typename T>
+bool ReadMem(DWORD64 pBaseAddr, std::vector<DWORD> pOffsets, T& pResult)
 {
 	if (!pBaseAddr || pOffsets.empty() || !Offsets::hProc)
 	{
@@ -39,7 +60,7 @@ bool ReadMem(DWORD64 pBaseAddr, std::vector<DWORD> pOffsets, T &pResult)
 
 	for (int i{ 0 }; i < pOffsets.size(); ++i)
 	{
-		SIZE_T nbBytes{0};
+		SIZE_T nbBytes{ 0 };
 		pBaseAddr += pOffsets[i];
 		if (!ReadProcessMemory(Offsets::hProc, (T*)pBaseAddr, &pResult, sizeof(T), &nbBytes) || !nbBytes)
 		{

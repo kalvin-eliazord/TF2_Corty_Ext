@@ -72,7 +72,7 @@ bool Cheat::IsGoodEnt(Entity* pEntity)
 bool Cheat::Run()
 {
 	Aimbot aBot{};
-	ESP esp{};
+	ESP    esp{};
 	if (!(esp.InitWin() && esp.CreateD3D9()))
 		return false;
 
@@ -90,6 +90,15 @@ bool Cheat::Run()
 
 			if (Menu::bESP)
 				esp.Run(entities);
+
+			if(Menu::bCleared) Menu::bCleared = false;
+		}
+
+		if (!(Menu::bESP || Menu::bCleared))
+		{
+			esp.d3d9Device->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_RGBA(0, 0, 0, 0), 1.0f, 0);
+			esp.d3d9Device->Present(NULL, NULL, NULL, NULL);
+			Menu::bCleared = true;
 		}
 
 		Sleep(10);

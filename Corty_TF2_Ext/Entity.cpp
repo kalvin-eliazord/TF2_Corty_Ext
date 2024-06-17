@@ -18,6 +18,7 @@ bool Entity::InitData()
 	if (!SetHealth()) return false;
 	if (!SetTeamID())return false;
 //	if (!SetDormant()) return false; TODO
+//	if (!SetAlive()) return false; TODO
 	if (!SetBodyPos())return false;
 	if (!SetAngles())return false;
 
@@ -51,5 +52,5 @@ bool Entity::SetAngles()
 
 bool Entity::SetAlive()
 {
-	return ReadMem<bool>(this->baseAddr, { Offsets::Entity::Dormant }, this->bDormant);
+	return ReadMem<bool>(this->baseAddr, { Offsets::Entity::Alive }, this->bAlive); 
 }

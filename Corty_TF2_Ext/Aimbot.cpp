@@ -1,45 +1,41 @@
 #include "Aimbot.h"
 
-bool Aimbot::Run(const std::vector<Entity>& pEntities)
+void Aimbot::Run(const std::vector<Entity>& pEntities)
 {
-	if (pEntities.empty())
-		return false;
+	if (pEntities.empty()) return;
 
-	Vector3 botAngles{};
-	if (!(Menu::bTargetLock && entIndex))
+	std::optional<Vector3> botAngles{};
+	if (!(Menu::bTargetLock && iEntLocked))
 	{
 		botAngles = GetNearEntAngles(pEntities);
+		if (!botAngles) return;
 
-		if (!IsFOV(botAngles))
-			return true;
+		if (!IsFOV(*botAngles)) return;
 	}
 	else
 	{
 		// Target locking 
-		Entity entLocked(Cheat::GetEntity(entIndex), entIndex);
+		Entity entLocked(Cheat::GetEntity(iEntLocked), iEntLocked);
 		if (entLocked.health <= 1)
 		{
-			entIndex = 0;
-			return true;
+			iEntLocked = 0;
+			return;
 		}
 
-		CalcAngles(entLocked.vBodyPos, botAngles);
+		botAngles = GetEntAngles(entLocked.vBodyPos);
 
-		if (!IsFOV(botAngles))
-			return true;
+		if (!IsFOV(*botAngles)) return;
 	}
 
-	if(Menu::iSmooth > 0)
-		SetSmoothAngles(botAngles, Menu::iSmooth);
+	if (Menu::iSmooth > 0)
+		SetAngles(*botAngles, Menu::iSmooth);
 	else
-		SetAngles(botAngles);
-
-	return true;
+		SetAngles(*botAngles);
 }
 
-Vector3 Aimbot::GetNearEntAngles(const std::vector<Entity>& pEntities)
+std::optional<Vector3> Aimbot::GetNearEntAngles(const std::vector<Entity>& pEntities)
 {
-	Vector3 vNewAngles{};
+	std::optional<Vector3> vNewAngles{};
 	float oldCoef{ FLT_MAX };
 
 	for (auto& entity : pEntities)
@@ -49,9 +45,10 @@ Vector3 Aimbot::GetNearEntAngles(const std::vector<Entity>& pEntities)
 		const float posDist{ sqrtf(vDeltaPos * vDeltaPos) };
 
 		// Angles distance
-		Vector3 currAngles{};
-		CalcAngles(entity.vBodyPos, currAngles);
-		Vector3 vDeltaAngle{ Cheat::GetLocalPlayer().vAngles - currAngles };
+		std::optional<Vector3> currAngles{ GetEntAngles(entity.vBodyPos) };
+		if (!currAngles) continue;
+
+		Vector3 vDeltaAngle{ Cheat::GetLocalPlayer().vAngles - *currAngles };
 		const float angleDist{ ::sqrtf(vDeltaAngle * vDeltaAngle) };
 
 		// Nearest entity based on the position and the angle distance
@@ -62,7 +59,7 @@ Vector3 Aimbot::GetNearEntAngles(const std::vector<Entity>& pEntities)
 			vNewAngles = currAngles;
 
 			// Needed to access the entity when the target locking is activated
-			entIndex = entity.index;
+			iEntLocked = entity.index;
 		}
 	}
 
@@ -82,17 +79,21 @@ bool Aimbot::IsFOV(const Vector3& pBotAngles)
 	return false;
 }
 
-void Aimbot::CalcAngles(const Vector3& pEntPos, Vector3& pBotAngles)
+std::optional<Vector3> Aimbot::GetEntAngles(const Vector3& pEntPos)
 {
+	std::optional<Vector3> botAngles{};
+
 	Vector3 vDelta{ Cheat::GetLocalPlayer().vBodyPos - pEntPos };
 	const float fMagnitude{ ::sqrtf(vDelta * vDelta) };
 
 	constexpr float radToDegree{ 57.295778f };
-	pBotAngles.x = asinf(vDelta.z / fMagnitude) * radToDegree;
-	pBotAngles.y = (atan2f(vDelta.y, vDelta.x) * radToDegree) + 180; // Normalize Yaw
-	pBotAngles.z = 0;
+	botAngles->x = asinf(vDelta.z / fMagnitude) * radToDegree;
+	botAngles->y = (atan2f(vDelta.y, vDelta.x) * radToDegree) + 180; // Normalize Yaw
+	botAngles->z = 0;
 
-	ClampPitch(pBotAngles.x);
+	ClampPitch(botAngles->x);
+
+	return botAngles;
 }
 
 void Aimbot::ClampPitch(float& pPitch)
@@ -107,7 +108,7 @@ void Aimbot::NormalizeYaw(float& pYaw)
 	while (pYaw < -180.f) pYaw += 360.f;
 }
 
-Vector3 Aimbot::GetLocalPlayerAngles()
+std::optional<Vector3> Aimbot::GetLocalPlayerAngles()
 {
 	Vector3 lpAngles{};
 	ReadMem<Vector3>(Cheat::GetLocalPlayer().baseAddr, { Offsets::Entity::Angles }, lpAngles);
@@ -125,18 +126,24 @@ bool Aimbot::SetAngles(const Vector3& pBotAngles)
 	return true;
 }
 
-bool Aimbot::SetSmoothAngles(Vector3 pBotAngles, int pSmooth)
+bool Aimbot::SetAngles(Vector3 pBotAngles, int pSmooth)
 {
-	Vector3 lpAngles{ GetLocalPlayerAngles() };
-	Vector3 vDelta{ pBotAngles - lpAngles };
+	std::optional<Vector3> lpAngles{ GetLocalPlayerAngles() };
+	if (!lpAngles)
+	{
+		std::cerr << "[-] Cannot get localPlayer angles. \r";
+		return false;
+	}
+
+	Vector3 vDelta{ pBotAngles - *lpAngles };
 	NormalizeYaw(vDelta.y);
 
-	if (lpAngles.x != pBotAngles.x)
-		lpAngles.x += vDelta.x / static_cast<float>(pSmooth);
+	if (lpAngles->x != pBotAngles.x)
+		lpAngles->x += vDelta.x / static_cast<float>(pSmooth);
 
-	if (lpAngles.y != pBotAngles.y)
-		lpAngles.y += vDelta.y / static_cast<float>(pSmooth);
+	if (lpAngles->y != pBotAngles.y)
+		lpAngles->y += vDelta.y / static_cast<float>(pSmooth);
 
-	SetAngles(lpAngles);
+	SetAngles(*lpAngles);
 	return true;
 }

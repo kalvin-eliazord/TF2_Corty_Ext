@@ -10,8 +10,8 @@
 namespace Cheat
 {
 	bool Run();
-	DWORD64 GetEntity(UINT pIndex);
-	std::vector<Entity> GetEntities();
 	Entity GetLocalPlayer();
+	DWORD64 GetEntity(UINT pIndex);
 	bool IsGoodEnt(Entity* pEntity);
+	std::vector<Entity> GetEntities();
 };

@@ -12,6 +12,7 @@ namespace Menu
 	inline bool bTargetLock{ false };
 	inline int iSmooth{ 0 };
 	inline int iFOV{ 30 };
+	inline bool bCleared{ false };
 
 	bool IsOptionChanged();
 	void PrintMenu();

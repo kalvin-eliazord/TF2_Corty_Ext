@@ -13,20 +13,13 @@ int main()
 	if (!gPointers.Init())
 	{
 		Menu::PrintPtrErr(gPointers.ptrList);
-
-		if (Offsets::hProc)
-			CloseHandle(Offsets::hProc);
-
+		if (Offsets::hProc) CloseHandle(Offsets::hProc);
 		return 1;
 	}
 
 	Menu::PrintMenu();
 
-	if (!Cheat::Run())
-		system("PAUSE");
-
-	if (Offsets::hProc)
-		CloseHandle(Offsets::hProc);
-
+	if (!Cheat::Run()) system("PAUSE");
+	if (Offsets::hProc) CloseHandle(Offsets::hProc);
 	return 0;
 }

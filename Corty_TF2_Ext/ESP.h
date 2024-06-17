@@ -3,10 +3,11 @@
 #include <winnt.h>
 #include <d3d9.h>
 #pragma comment(lib, "d3d9.lib")
-//#pragma comment(lib, "d3dx9.lib") ?
-#include "Entity.h"
 #include <vector>
 #include <dwmapi.h>
+#include "Entity.h"
+#include "Vector3.h"
+#include "Offsets.h"
 
 struct DataWin
 {
@@ -16,15 +17,17 @@ struct DataWin
 	MSG msg{};
 };
 
-struct ESP
+struct ESP 
 {
 	DataWin targetHwnd{};
+	HWND* myWnd {};
 	IDirect3D9* d3d9Interface{ nullptr };
 	IDirect3DDevice9* d3d9Device{ nullptr };
 
 	bool InitWin();
-	bool Run(std::vector<Entity> pEntities);
 	bool CreateD3D9();
-	bool Draw();
+	void Run(const std::vector<Entity>& pEntities);
+	bool Draw(const std::vector<Entity>& pEntities);
+	bool W2S(Vector3 pWorldPos, Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight);
 	~ESP();
 };
