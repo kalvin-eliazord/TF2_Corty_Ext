@@ -30,6 +30,7 @@ struct ESP
 	bool CreateD3D9();
 	void Run(const std::vector<Entity>& pEntities);
 	bool Draw(const std::vector<Entity>& pEntities);
-	bool W2S(Vector3 pWorldPos, Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight);
+	void SnapLine(const Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight);
+	bool W2S(Vector3 pWorldPos, Vector3& pScreenPos, float pMatrix[4][4], const FLOAT pWinWidth, const FLOAT pWinHeight);
 	~ESP();
 };

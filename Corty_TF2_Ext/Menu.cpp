@@ -7,7 +7,7 @@ bool Menu::IsOptionChanged()
 		bAimbot = !bAimbot;
 		return true;
 	}
-	else if (GetAsyncKeyState(VK_F2) & 1)
+	else if (GetAsyncKeyState(VK_RBUTTON) & 1)
 	{
 		bTargetLock = !bTargetLock;
 		return true;
@@ -60,7 +60,7 @@ void Menu::PrintMenu()
 		)" << '\n';
 	std::cout << "-------------------------------------------------------------- \n";
 	std::cout << "[+] AIMBOT [LSHIFT] " << std::boolalpha << "->[[" << bAimbot << "]] \n";
-	std::cout << "[+] T_LOCK [F2]     " << std::boolalpha << "->[[" << bTargetLock << "]] \n";
+	std::cout << "[+] T_LOCK [RCLICK] " << std::boolalpha << "->[[" << bTargetLock << "]] \n";
 	std::cout << "[+] SMOOTH [F3- F4+]" << "->[[" << iSmooth << "]] \n";
 	std::cout << "[+] FOV    [F5- F6+]" << "->[[" << iFOV << "]] \n";
 	std::cout << "[+] ESP    [F7]     " << std::boolalpha << "->[[" << bESP << "]] \n";

@@ -16,7 +16,6 @@ LRESULT CALLBACK WndProc(HWND pHwnd, UINT pMsg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);
 		return 0;
 		break;
-
 	}
 
 	return DefWindowProc(pHwnd, pMsg, wParam, lParam);
@@ -144,26 +143,27 @@ bool ESP::Draw(const std::vector<Entity>& pEntities)
 	D3DVIEWPORT9 viewport{};
 	d3d9Device->GetViewport(&viewport);
 
-	// TODO Boxes
 	if (!pEntities.empty())
 	{
-		for (auto& ent : pEntities)
+		float viewMatrix[4][4]{};
+		const DWORD64 conVarBase{ Offsets::EngineMod + Offsets::ConVar };
+		if (!ReadMem(conVarBase + Offsets::ViewMatrix, sizeof(viewMatrix), viewMatrix))
+			return false;
+
+		for (const auto& ent : pEntities)
 		{
 			Vector3 screenPos{};
-			if (!W2S(ent.vBodyPos, screenPos, static_cast<FLOAT>(this->targetHwnd.width), static_cast<FLOAT>(this->targetHwnd.height)))
+			if (!W2S(
+				ent.vBodyPos,
+				screenPos,
+				viewMatrix,
+				static_cast<FLOAT>(this->targetHwnd.width),
+				static_cast<FLOAT>(this->targetHwnd.height))
+				)
 				continue;
 
-			// Setting line
-			D3DXVECTOR2 myLines[2];
-			myLines[0] = D3DXVECTOR2(screenPos.x, screenPos.y);
-			myLines[1] = D3DXVECTOR2(static_cast<FLOAT>(this->targetHwnd.width / 2), static_cast<FLOAT>(this->targetHwnd.height));
-
-			// Drawing line
-			ID3DXLine* d3dLine{};
-			D3DXCreateLine(d3d9Device, &d3dLine);
-			d3dLine->SetWidth(2);
-			d3dLine->Draw(myLines, 2, D3DCOLOR_RGBA(255, 255,255,255));
-			d3dLine->Release();
+			SnapLine(screenPos, static_cast<FLOAT>(this->targetHwnd.width), static_cast<FLOAT>(this->targetHwnd.height));
+			// TODO Boxes
 		}
 	}
 
@@ -174,34 +174,45 @@ bool ESP::Draw(const std::vector<Entity>& pEntities)
 	return true;
 }
 
-bool ESP::W2S(Vector3 pWorldPos, Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight)
+void ESP::SnapLine(const Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight)
 {
-	float matrix2[4][4];
-	const DWORD64 ConVarBase{ Offsets::EngineMod + Offsets::ConVar };
-	ReadMem(ConVarBase + Offsets::ViewMatrix, sizeof(matrix2), matrix2);
+	// Setting line
+	D3DXVECTOR2 myLines[2];
+	myLines[0] = D3DXVECTOR2(pScreenPos.x, pScreenPos.y);
+	myLines[1] = D3DXVECTOR2(static_cast<FLOAT>(this->targetHwnd.width / 2), static_cast<FLOAT>(this->targetHwnd.height));
 
+	// Drawing line
+	ID3DXLine* d3dLine{};
+	D3DXCreateLine(d3d9Device, &d3dLine);
+	d3dLine->SetWidth(2);
+	d3dLine->Draw(myLines, 2, D3DCOLOR_RGBA(255, 255, 100, 255));
+	d3dLine->Release();
+}
+
+bool ESP::W2S(Vector3 pWorldPos, Vector3& pScreenPos, float pMatrix[4][4], const FLOAT pWinWidth, const FLOAT pWinHeight)
+{
 	const float mX{ pWinWidth / 2 };
 	const float mY{ pWinHeight / 2 };
 
 	const float w{
-		matrix2[3][0] * pWorldPos.x +
-		matrix2[3][1] * pWorldPos.y +
-		matrix2[3][2] * pWorldPos.z +
-		matrix2[3][3] };
+		pMatrix[3][0] * pWorldPos.x +
+		pMatrix[3][1] * pWorldPos.y +
+		pMatrix[3][2] * pWorldPos.z +
+		pMatrix[3][3] };
 
 	if (w < 0.65f) return false;
 
 	const float x{
-		matrix2[0][0] * pWorldPos.x +
-		matrix2[0][1] * pWorldPos.y +
-		matrix2[0][2] * pWorldPos.z +
-		matrix2[0][3] };
+		pMatrix[0][0] * pWorldPos.x +
+		pMatrix[0][1] * pWorldPos.y +
+		pMatrix[0][2] * pWorldPos.z +
+		pMatrix[0][3] };
 
 	const float y{
-		matrix2[1][0] * pWorldPos.x +
-		matrix2[1][1] * pWorldPos.y +
-		matrix2[1][2] * pWorldPos.z +
-		matrix2[1][3] };
+		pMatrix[1][0] * pWorldPos.x +
+		pMatrix[1][1] * pWorldPos.y +
+		pMatrix[1][2] * pWorldPos.z +
+		pMatrix[1][3] };
 
 	pScreenPos.x = (mX + mX * x / w);
 	pScreenPos.y = (mY - mY * y / w);
