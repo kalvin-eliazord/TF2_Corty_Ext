@@ -79,21 +79,18 @@ bool Aimbot::IsFOV(const Vector3& pBotAngles)
 	return false;
 }
 
-std::optional<Vector3> Aimbot::GetEntAngles(const Vector3& pEntPos)
+Vector3 Aimbot::GetEntAngles(const Vector3& pEntPos)
 {
-	std::optional<Vector3> botAngles{};
-
 	Vector3 vDelta{ Cheat::GetLocalPlayer().vBodyPos - pEntPos };
 	const float fMagnitude{ ::sqrtf(vDelta * vDelta) };
 
 	constexpr float radToDegree{ 57.295778f };
-	botAngles->x = asinf(vDelta.z / fMagnitude) * radToDegree;
-	botAngles->y = (atan2f(vDelta.y, vDelta.x) * radToDegree) + 180; // Normalize Yaw
-	botAngles->z = 0;
+	float pitch { asinf(vDelta.z / fMagnitude) * radToDegree };
+	const float yaw{ (atan2f(vDelta.y, vDelta.x) * radToDegree) + 180 }; // Normalize Yaw
 
-	ClampPitch(botAngles->x);
+	ClampPitch(pitch);
 
-	return botAngles;
+	return { pitch,yaw,0 };
 }
 
 void Aimbot::ClampPitch(float& pPitch)

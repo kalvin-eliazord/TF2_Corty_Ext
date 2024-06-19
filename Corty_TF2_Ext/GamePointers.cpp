@@ -114,6 +114,7 @@ bool GamePointers::Init()
 		SetAngles(&dataEngine, Pattern::vAngles);
 		SetLocalPlayer(&dataClient, Pattern::LocalPlayer);
 		SetEntityList(&dataClient, Pattern::EntityList);
+		SetConVar(&dataEngine, Pattern::ConVar);
 	}
 
 	return CheckPtrState();
@@ -126,6 +127,15 @@ void GamePointers::SetEntityList(DataMod* pDataMod, std::string_view pPattern)
 		Offsets::EntityList = ExtractOffset(pDataMod->baseAddr, patternAddr);
 
 	ptrList["EntityList"] = Offsets::EntityList;
+}
+
+void GamePointers::SetConVar(DataMod* pDataMod, std::string_view pPattern)
+{
+	const DWORD64 patternAddr{ GetPattern(pDataMod,  pPattern) };
+	if (patternAddr)
+		Offsets::ConVar = ExtractOffset(pDataMod->baseAddr, patternAddr);
+
+	ptrList["ConVar"] = Offsets::ConVar;
 }
 
 void GamePointers::SetLocalPlayer(DataMod* pDataMod, std::string_view pPattern)

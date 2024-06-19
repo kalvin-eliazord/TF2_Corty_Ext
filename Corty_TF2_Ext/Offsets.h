@@ -7,6 +7,8 @@ namespace Offsets
 	inline HANDLE hProc{};
 	inline DWORD64 ClientMod{};
 	inline DWORD64 EngineMod{};
+	inline DWORD64 ConVar{};
+	inline DWORD ViewMatrix{ 0x1BC };
 
 	inline DWORD EntityList{};
 
@@ -32,16 +34,14 @@ bool ReadMem(DWORD64 pBaseAddr, auto pSize, T& pResult)
 {
 	if (!pBaseAddr || !pSize)
 	{
-		std::cerr << "[-] Cannot read memory, please check parameters. \n";
-		system("PAUSE");
+		std::cerr << "[-] Cannot read memory, please check parameters. \r";
 		return false;
 	}
 
 	SIZE_T nbBytes{ 0 };
 	if (!ReadProcessMemory(Offsets::hProc, (T*)pBaseAddr, &pResult, pSize, &nbBytes) || !nbBytes)
 	{
-		std::cerr << "[-] Cannot read memory, please check pointer path. \n";
-		system("PAUSE");
+		std::cerr << "[-] Cannot read memory, please check pointer path. \r";
 		return false;
 	}
 
@@ -53,8 +53,7 @@ bool ReadMem(DWORD64 pBaseAddr, std::vector<DWORD> pOffsets, T& pResult)
 {
 	if (!pBaseAddr || pOffsets.empty() || !Offsets::hProc)
 	{
-		std::cerr << "[-] Cannot read memory, please check parameters. \n";
-		system("PAUSE");
+		std::cerr << "[-] Cannot read memory, please check parameters. \r";
 		return false;
 	}
 
@@ -64,8 +63,7 @@ bool ReadMem(DWORD64 pBaseAddr, std::vector<DWORD> pOffsets, T& pResult)
 		pBaseAddr += pOffsets[i];
 		if (!ReadProcessMemory(Offsets::hProc, (T*)pBaseAddr, &pResult, sizeof(T), &nbBytes) || !nbBytes)
 		{
-			std::cerr << "[-] Cannot read memory, please check pointer path. \n";
-			system("PAUSE");
+			std::cerr << "[-] Cannot read memory, please check pointer path. \r";
 			return false;
 		}
 	}

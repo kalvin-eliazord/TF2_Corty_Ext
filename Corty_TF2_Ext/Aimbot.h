@@ -16,6 +16,6 @@ struct Aimbot
 	std::optional<Vector3> GetLocalPlayerAngles();
 	void Run(const std::vector<Entity>& pEntities);
 	bool SetAngles(Vector3 pBotAngles, int pSmooth);
-	std::optional<Vector3> GetEntAngles(const Vector3& pEntPos);
+	Vector3 GetEntAngles(const Vector3& pEntPos);
 	std::optional<Vector3> GetNearEntAngles(const std::vector<Entity>& pEntities);
 };

@@ -144,22 +144,26 @@ bool ESP::Draw(const std::vector<Entity>& pEntities)
 	D3DVIEWPORT9 viewport{};
 	d3d9Device->GetViewport(&viewport);
 
-#ifdef _DEBUG
-	D3DRECT rect{
-		static_cast<LONG>(viewport.Width / 2),
-		static_cast<LONG>(viewport.Height / 2),
-		static_cast<LONG>(viewport.Width / 2 + 100),
-		static_cast<LONG>(viewport.Height / 2 + 100) };
-
-	d3d9Device->Clear(1, &rect, D3DCLEAR_TARGET, D3DCOLOR_RGBA(255, 0, 0, 0), 0, 0);
-#endif
-	// TODO Snap lines + Boxes
+	// TODO Boxes
 	if (!pEntities.empty())
 	{
 		for (auto& ent : pEntities)
 		{
 			Vector3 screenPos{};
-			W2S(ent.vBodyPos, screenPos, static_cast<FLOAT>(this->targetHwnd.width), static_cast<FLOAT>(this->targetHwnd.height));
+			if (!W2S(ent.vBodyPos, screenPos, static_cast<FLOAT>(this->targetHwnd.width), static_cast<FLOAT>(this->targetHwnd.height)))
+				continue;
+
+			// Setting line
+			D3DXVECTOR2 myLines[2];
+			myLines[0] = D3DXVECTOR2(screenPos.x, screenPos.y);
+			myLines[1] = D3DXVECTOR2(static_cast<FLOAT>(this->targetHwnd.width / 2), static_cast<FLOAT>(this->targetHwnd.height));
+
+			// Drawing line
+			ID3DXLine* d3dLine{};
+			D3DXCreateLine(d3d9Device, &d3dLine);
+			d3dLine->SetWidth(2);
+			d3dLine->Draw(myLines, 2, D3DCOLOR_RGBA(255, 255,255,255));
+			d3dLine->Release();
 		}
 	}
 
@@ -167,15 +171,14 @@ bool ESP::Draw(const std::vector<Entity>& pEntities)
 	if (FAILED(hRes)) return false;
 
 	d3d9Device->Present(NULL, NULL, NULL, NULL);
-
 	return true;
 }
 
 bool ESP::W2S(Vector3 pWorldPos, Vector3& pScreenPos, const FLOAT pWinWidth, const FLOAT pWinHeight)
 {
 	float matrix2[4][4];
-	DWORD64 baseAddr{ 0x7FFBE4959624 };
-	ReadMem(baseAddr, sizeof(matrix2), matrix2);
+	const DWORD64 ConVarBase{ Offsets::EngineMod + Offsets::ConVar };
+	ReadMem(ConVarBase + Offsets::ViewMatrix, sizeof(matrix2), matrix2);
 
 	const float mX{ pWinWidth / 2 };
 	const float mY{ pWinHeight / 2 };
@@ -203,7 +206,6 @@ bool ESP::W2S(Vector3 pWorldPos, Vector3& pScreenPos, const FLOAT pWinWidth, con
 	pScreenPos.x = (mX + mX * x / w);
 	pScreenPos.y = (mY - mY * y / w);
 	pScreenPos.z = 0;
-
 	return true;
 }
 
