@@ -2,11 +2,11 @@
 Team Fortress 2 (x64) External Aimbot + ESP written in C++ for Windows.
 
 # Features
-Aimbot
+### Aimbot
 - Smoothing
 - Target locking
 - FOV
-ESP
+### ESP
 - SnapLine
 
 # Preview
