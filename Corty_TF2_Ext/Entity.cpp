@@ -18,7 +18,7 @@ bool Entity::InitData()
 	if (!SetHealth()) return false;
 	if (!SetTeamID())return false;
 //	if (!SetDormant()) return false; TODO
-//	if (!SetAlive()) return false; TODO
+	if (!SetIsDead()) return false;
 	if (!SetBodyPos())return false;
 	if (!SetAngles())return false;
 
@@ -32,7 +32,8 @@ bool Entity::SetHealth()
 
 bool Entity::SetTeamID()
 {
-	return ReadMem<DWORD>(this->baseAddr, { Offsets::Entity::TeamID }, this->teamID);
+	const DWORD teamId{ ReadMem<DWORD>(this->baseAddr, { Offsets::Entity::TeamID }, this->teamID) };
+	if (teamId != 2 || teamId != 3) return false; // Red Team or Blue Team
 }
 
 bool Entity::SetDormant()
@@ -50,7 +51,7 @@ bool Entity::SetAngles()
 	return ReadMem<Vector3>(this->baseAddr, { Offsets::Entity::Angles }, this->vAngles);
 }
 
-bool Entity::SetAlive()
+bool Entity::SetIsDead()
 {
-	return ReadMem<bool>(this->baseAddr, { Offsets::Entity::Alive }, this->bAlive); 
+	return ReadMem<bool>(this->baseAddr, { Offsets::Entity::isDead }, this->isDead);
 }

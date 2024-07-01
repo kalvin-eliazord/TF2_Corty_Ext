@@ -3,12 +3,18 @@
 #include "Vector3.h"
 #include "Offsets.h"
 
+enum TeamID
+{
+	red = 2,
+	blue = 3
+};
+
 struct Entity
 {
 	bool bInit{ false };
 	DWORD64 baseAddr{};
 	DWORD health{};
-	bool bAlive{};
+	bool isDead{};
 	DWORD teamID{};
 	bool bDormant{};
 	Vector3 vBodyPos{};
@@ -24,5 +30,5 @@ struct Entity
 	bool SetDormant();
 	bool SetBodyPos();
 	bool SetAngles();
-	bool SetAlive();
+	bool SetIsDead();
 };

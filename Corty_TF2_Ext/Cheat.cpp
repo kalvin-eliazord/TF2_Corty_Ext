@@ -54,11 +54,11 @@ bool Cheat::IsGoodEnt(Entity* pEntity)
 	if (pEntity->baseAddr == GetLocalPlayer().baseAddr)
 		return false;
 
-	if (pEntity->health <= 1)
-		return false;
+	//if (pEntity->health <= 0)
+	//	return false;
 
-	//if (!pEntity->bAlive) TODO
-	//    return false;
+	if (pEntity->isDead)
+	    return false;
 
 	/*if (pEntity->bDormant) TODO
 		return false;*/

@@ -25,7 +25,7 @@ namespace Offsets
 		inline constexpr DWORD Angles{ 0x344 };
 		inline constexpr DWORD TeamID{ 0xEC };
 		inline constexpr DWORD Dormant{ 0x2A };
-		inline constexpr DWORD Alive{ 0x0 }; //TODO
+		inline constexpr DWORD isDead{ 0x15D0 }; // 0x7BC -> bAlive?
 	}
 }
 

@@ -145,8 +145,9 @@ bool ESP::Draw(const std::vector<Entity>& pEntities)
 
 	if (!pEntities.empty())
 	{
-		float viewMatrix[4][4]{};
 		const DWORD64 conVarBase{ Offsets::EngineMod + Offsets::ConVar };
+
+		float viewMatrix[4][4]{};
 		if (!ReadMem(conVarBase + Offsets::ViewMatrix, sizeof(viewMatrix), viewMatrix))
 			return false;
 
